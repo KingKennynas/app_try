@@ -7,8 +7,10 @@ Para el diseño y desarrollo de la interfaz en primera instancia se optó por ha
 
 
 Interfaz> https://youtu.be/QNn6ZLVlO9c
+
 Interfaz+SistemaAdquisición> https://youtu.be/Vvd17HmrU1U
 
 
 DiseñoFlutterFlow> https://app.flutterflow.io/project/micromimic-kejgz1
+
 FuncionamientoMockUp> https://youtu.be/0ln1awBlhRE
