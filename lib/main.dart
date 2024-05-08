@@ -173,11 +173,11 @@ class _MicromimicScreenState extends State<MicromimicScreen> {
     if (temperatureValues.isNotEmpty) {
       int lastTemperature = temperatureValues.last;
       if (lastTemperature < 35) {
-        return 'Hipotermia';
+        return 'Paciente presenta = Hipotermia';
       } else if (lastTemperature > 37) {
-        return 'Fiebre';
+        return 'Paciente presenta = Fiebre';
       } else {
-        return 'Normal';
+        return 'Temperatura del paciente Normal';
       }
     } else {
       return 'No data';
