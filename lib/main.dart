@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      title: 'Micromimic App',
+      title: 'Medición de Temperatura',
       home: MicromimicScreen(),
     );
   }
