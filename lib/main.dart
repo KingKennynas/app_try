@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'dart:typed_data';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:libserialport/libserialport.dart';
 
@@ -28,7 +26,7 @@ class MicromimicScreen extends StatefulWidget {
 }
 
 class _MicromimicScreenState extends State<MicromimicScreen> {
-  List<double> temperatureValues = [0]; // Initialize with a default value
+  List<int> temperatureValues = [0]; // Initialize with a default value
 
   @override
   void initState() {
@@ -44,13 +42,16 @@ class _MicromimicScreenState extends State<MicromimicScreen> {
     // Set up a listener for incoming data
     try {
       SerialPortReader reader = SerialPortReader(port1);
-      Stream<double> upcommingData = reader.stream.map((data) {
+      Stream<int> upcommingData = reader.stream.map((data) {
         // Assuming incoming data is a float represented as bytes
-        return double.parse(String.fromCharCodes(data));
+        return int.parse(String.fromCharCodes(data));
       });
-      upcommingData.listen((double data) {
+      upcommingData.listen((int data) {
         setState(() {
           temperatureValues.add(data);
+          if (temperatureValues.length > 5) {
+            temperatureValues.removeAt(0);
+          }
         });
       });
     } on SerialPortError catch (err, _) {
@@ -142,7 +143,7 @@ class _MicromimicScreenState extends State<MicromimicScreen> {
                         lineBarsData: [
                           LineChartBarData(
                             spots: temperatureValues.asMap().entries.map((entry) {
-                              return FlSpot(entry.key.toDouble(), entry.value);
+                              return FlSpot(entry.key.toDouble(), entry.value.toDouble());
                             }).toList(),
                             isCurved: true,
                             colors: [Colors.blue],
@@ -170,7 +171,7 @@ class _MicromimicScreenState extends State<MicromimicScreen> {
 
   String _getTemperatureStatus() {
     if (temperatureValues.isNotEmpty) {
-      double lastTemperature = temperatureValues.last;
+      int lastTemperature = temperatureValues.last;
       if (lastTemperature < 35) {
         return 'Hipotermia';
       } else if (lastTemperature > 37) {
