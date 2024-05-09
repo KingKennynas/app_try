@@ -64,7 +64,7 @@ class _MicromimicScreenState extends State<MicromimicScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Micromimic App'),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.blue,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
