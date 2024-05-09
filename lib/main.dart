@@ -177,7 +177,7 @@ class _MicromimicScreenState extends State<MicromimicScreen> {
       } else if (lastTemperature > 37) {
         return 'Paciente presenta = Fiebre';
       } else {
-        return 'Temperatura del paciente Normal';
+        return 'Temperatura Normal';
       }
     } else {
       return 'No data';
